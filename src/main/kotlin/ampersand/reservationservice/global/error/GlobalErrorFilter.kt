@@ -13,7 +13,7 @@ class GlobalErrorFilter(
     private val objectMapper: ObjectMapper
 ) : OncePerRequestFilter() {
 
-    override fun doFilterInternal(request: HttpServletRequest,response: HttpServletResponse,filterChain: FilterChain) {
+    override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val result = runCatching {
             filterChain.doFilter(request, response)
         }
