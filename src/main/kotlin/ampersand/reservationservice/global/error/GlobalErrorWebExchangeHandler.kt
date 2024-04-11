@@ -49,7 +49,7 @@ class GlobalErrorWebExchangeHandler(
     private fun buildErrorResponse(ex: ReservationException) =
         ServerResponse.status(ex.status)
             .bodyValue(
-                ErrorResponse.of(ex.cause!!)
+                ErrorResponse(ex.errorMessage, ex.status.value())
             )
 
 }
