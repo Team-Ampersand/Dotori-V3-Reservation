@@ -8,7 +8,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "self_study")
+@Table(name = "tbl_self_study")
 class SelfStudyEntity(
 
     @Id

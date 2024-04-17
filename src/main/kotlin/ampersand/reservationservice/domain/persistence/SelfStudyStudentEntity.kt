@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "self_study_student")
+@Table(name = "tbl_self_study_student")
 class SelfStudyStudentEntity(
 
     @Id
