@@ -1,4 +1,4 @@
-package ampersand.reservationservice.domain.persistence
+package ampersand.reservationservice.domain.selfstudy
 
 import javax.persistence.Column
 import javax.persistence.Entity
