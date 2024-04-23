@@ -4,7 +4,7 @@
              version="2.2">
     <persistence-unit name="reservation-service-mysql">
         <provider>org.hibernate.reactive.provider.ReactivePersistenceProvider</provider>
-        <class>ampersand.reservationservice.domain.persistence.SelfStudyEntity</class>
+        <class>ampersand.reservationservice.domain.selfstudy.SelfStudyEntity</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
     </persistence-unit>
 
