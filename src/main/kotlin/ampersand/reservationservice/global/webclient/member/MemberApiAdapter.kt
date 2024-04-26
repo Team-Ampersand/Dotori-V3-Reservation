@@ -13,14 +13,17 @@ class MemberApiAdapter(
     private val webClient: WebClient,
     @Value("\${service.member.host}")
     private val memberHost: String,
+    @Value("\${service.member.port}")
+    private val memberPort: Int,
     @Value("\${service.scheme}")
     private val scheme: String,
 ) : MemberApi {
 
     override suspend fun getMemberById(id: Long): Member {
-        val uri = UriComponentsBuilder.fromPath("/member/id/{memberId}")
+        val uri = UriComponentsBuilder.fromPath("/id/{memberId}")
             .scheme(scheme)
             .host(memberHost)
+            .port(memberPort)
             .buildAndExpand(id)
             .toUri()
 
