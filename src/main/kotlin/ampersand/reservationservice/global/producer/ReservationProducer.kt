@@ -1,27 +1,27 @@
 package ampersand.reservationservice.global.producer
 
+import kotlinx.coroutines.future.await
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 
 @Component
 class ReservationProducer(
-    private val kafkaTemplate: KafkaTemplate<String, Long>
+    private val kafkaTemplate: KafkaTemplate<String, String>
 ) {
 
-    fun applySelfStudy(memberId: Long) {
-        kafkaTemplate.send("apply-selfstudy", memberId)
+    suspend fun applySelfStudy(memberId: String) {
+        kafkaTemplate.send("apply-selfstudy", memberId).await()
     }
 
-    fun cancelSelfStudy(memberId: Long) {
-        kafkaTemplate.send("cancel-selfstudy", memberId)
+    suspend fun cancelSelfStudy(memberId: String) {
+        kafkaTemplate.send("cancel-selfstudy", memberId).await()
     }
 
-    fun applyMassage(memberId: Long) {
-        kafkaTemplate.send("apply-massage", memberId)
+    suspend fun applyMassage(memberId: String) {
+        kafkaTemplate.send("apply-massage", memberId).await()
     }
 
-    fun cancelMassage(memberId: Long) {
-        kafkaTemplate.send("cancel-massage", memberId)
+    suspend fun cancelMassage(memberId: String) {
+        kafkaTemplate.send("cancel-massage", memberId).await()
     }
-
 }
