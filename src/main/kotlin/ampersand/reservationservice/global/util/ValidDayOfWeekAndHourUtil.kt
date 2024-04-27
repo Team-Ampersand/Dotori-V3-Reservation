@@ -15,11 +15,14 @@ class ValidDayOfWeekAndHourUtil(
         val dayOfWeek = currentTime.dayOfWeek
         val hour = currentTime.hour
 
-        if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY)
-            throw ReservationException("not self study apply day", HttpStatus.CONFLICT)
-
+        validateDayOfWeek(dayOfWeek)
         if (hour != 20)
             throw ReservationException("not self study apply hour", HttpStatus.CONFLICT)
+    }
+
+    private fun validateDayOfWeek(dayOfWeek: DayOfWeek) {
+        if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY)
+            throw ReservationException("Reservation are not available on this day", HttpStatus.CONFLICT)
     }
 
 }
