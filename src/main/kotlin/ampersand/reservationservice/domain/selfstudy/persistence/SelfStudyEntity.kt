@@ -1,4 +1,4 @@
-package ampersand.reservationservice.domain.selfstudy
+package ampersand.reservationservice.domain.selfstudy.persistence
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -17,9 +17,15 @@ class SelfStudyEntity(
     val id: Long = 0,
 
     @Column(name = "self_study_limit")
-    val limit: Int,
+    var limit: Int,
 
     @Column(name = "self_study_count")
-    val count: Int
+    var count: Int
 
-)
+) {
+
+    fun addCount() {
+        this.count++
+    }
+
+}

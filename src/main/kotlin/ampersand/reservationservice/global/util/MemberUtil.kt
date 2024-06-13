@@ -1,21 +1,21 @@
 package ampersand.reservationservice.global.util
 
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.context.SecurityContextHolder
+import kotlinx.coroutines.reactor.awaitSingle
+import org.springframework.security.core.context.ReactiveSecurityContextHolder
 import org.springframework.stereotype.Component
 
 @Component
 class MemberUtil {
 
-    fun getCurrentMemberId(): Long =
-        SecurityContextHolder.getContext().authentication.name.toLong()
+    suspend fun getCurrentMemberId(): Long =
+        ReactiveSecurityContextHolder.getContext().awaitSingle().authentication.name.toLong()
 
-    fun getUserAuthority(): List<String> {
-        val authorities = SecurityContextHolder.getContext().authentication.authorities
-
-        return authorities.stream()
-            .map(GrantedAuthority::authority)
-            .toList()
-    }
+//    suspend fun getUserAuthority(): List<String> {
+//        val authorities = ReactiveSecurityContextHolder.getContext().awaitSingle().authentication.authorities
+//
+//        return authorities.stream()
+//            .map(GrantedAuthority::authority)
+//            .toList()
+//    }
 
 }
